@@ -245,10 +245,10 @@
 <p> ps:本机8G内存(可以模拟3台虚拟机&lt;总6G&gt;+本地2G)</p>
 <p>  1.主机采用伪分布,用于测试所写的MR程序,然后将所编译的jar包通过scp上传到HDFS集群．这样就可以DeBug MR</p>
 <p>  由于我启动了HBase，所以在jvm中会有HBase的进程</p>
-<p>  <img src="./png/1460644826484.png" alt="Alt text"><br> ２.安装3台虚拟机</p>
+<p>  <img src="/.io//1460644826484.png" alt="Alt text"><br> ２.安装3台虚拟机</p>
 <p>  2.1)虚拟机网络问题:<br>  VBox可以使用多网卡,所以可以装2个网卡,一个用于和本地主机公用Net网络,另一个用于虚拟机内部的3台互联.</p>
 <p>  <strong>安装一个slave节点,其他的节点可以通过复制虚拟机实现.</strong></p>
-<p>2.2)网卡配置<br>  <img src="./png/1460645878161.png" alt="Alt text"></p>
+<p>2.2)网卡配置<br>  <img src="/.io//1460645878161.png" alt="Alt text"></p>
 <p>  ![Alt text](./png/2016-04-14 22:58:32屏幕截图.png)</p>
 <p>手动为master和slave的桥接网卡分配ip</p>
 <p>例如:</p>
