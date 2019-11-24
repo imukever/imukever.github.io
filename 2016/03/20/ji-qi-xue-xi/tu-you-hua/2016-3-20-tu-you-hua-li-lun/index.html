@@ -4,10 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="下载网易yum源, imukever">
-    <meta name="description" content="最近在搭建opensatck环境，由于所有的部署为离线的状态，所以决定自己搭建一个yum源服务器网上也有一下关于reposync和createrepo的用法，我在使用reposync时很多包出现下载失败，于是自己就写了一个脚本
+    <meta name="keywords" content="凸优化理论, imukever">
+    <meta name="description" content="
 
-#!/us">
+
+我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。
+其实我一直想写">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>下载网易yum源 | 探索</title>
+    <title>凸优化理论 | 探索</title>
    
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -163,13 +165,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        下载网易yum源
+                        凸优化理论
                     </div>
                 </div>
             </div>
@@ -191,8 +193,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/ubuntu/" target="_blank">
+                                <span class="chip bg-color">ubuntu</span>
+                            </a>
+                        
+                            <a href="/tags/凸优化/" target="_blank">
+                                <span class="chip bg-color">凸优化</span>
+                            </a>
+                        
+                            <a href="/tags/SVM/" target="_blank">
+                                <span class="chip bg-color">SVM</span>
                             </a>
                         
                     </div>
@@ -206,21 +216,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2016-10-07
+                    2016-03-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        309
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -236,69 +246,122 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近在搭建opensatck环境，由于所有的部署为离线的状态，所以决定自己搭建一个yum源服务器<br>网上也有一下关于reposync和createrepo的用法，我在使用reposync时很多包出现下载失败，于是自己就写了一个脚本</p>
-<pre class=" language-python"><code class="language-python">
-<span class="token comment" spellcheck="true">#!/usr/bin/env python</span>
-<span class="token comment" spellcheck="true"># coding=utf-8</span>
+                <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 
-<span class="token keyword">import</span> requests
-<span class="token keyword">import</span> urllib2
-<span class="token keyword">import</span> bs4
-<span class="token keyword">import</span> sys
-<span class="token keyword">import</span> socket
+<p>我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。</p>
+<p>其实我一直想写一篇关于凸优化的blog，只不过每次想写的时候总觉得还欠点推论。（我不是数学专业的学生，反复的看数学相关的paper，反复的改，争取没有误解书中的理论。如果看完之后没有看懂，可以邮件给我回复。）</p>
+<p>下面开始带你走进凸优化的世界。</p>
+<div class="side-by-side">
+    <div class="toleft">
+        <img class="image" src="./png/liner.png" alt="Alt Text">
+    </div>
+    <div class="toright">
+        一般的直线形式为 $$ min f(x_1,x_2)=x_1^2+x_2^2 $$
+    </div>
+</div>
 
 
-reload<span class="token punctuation">(</span>sys<span class="token punctuation">)</span>
-sys<span class="token punctuation">.</span>setdefaultencoding<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>
 
-headers <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token string">"Accept-Language"</span><span class="token punctuation">:</span><span class="token string">"zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3"</span><span class="token punctuation">,</span>
-    <span class="token string">"User-Agent"</span><span class="token punctuation">:</span><span class="token string">"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0"</span>
+<ul>
+<li><p>1.最优化问题</p>
+<ul>
+<li><p>1.1无约束问题</p>
+<p>例如：  $$ min f(x_1,x_2)=x_1^2+x_2^2 $$</p>
+<p>$$ min f(x_1,x_2)=x_1^2+x_2^2 $$</p>
+<ul>
+<li><p>1.1.1无约束问题的整体解</p>
+<p>设 $$ x^* $$ 为全局最优解(以极小点为例)</p>
+<p>$$ f(x^<em>) &lt; f(x)\quad  \forall x\neq x^</em> $$</p>
+</li>
+<li><p>1.1.2无约束问题的局部解</p>
+<p>设 $$ x^*\in\Re^n $$ 为局部解或局部最优解(以极小点为例)</p>
+<p>存在 $$ \varepsilon&gt;0 $$ 使得 $$ |x-x^*|&lt; \varepsilon $$</p>
+<p>总有</p>
+<p>$$ f(x^<em>)\leq f(x)\quad  \forall x\neq x^</em> $$</p>
+</li>
+</ul>
+</li>
+<li><p>1.2约束问题</p>
+<ul>
+<li><p>1.2.1等式约束问题</p>
+<p>例如：    $$ min \quad  f(x)\s\cdot t\quad c_i(x)=0,i=1,2\cdots p $$</p>
+<p>p：为p个等式限制条件</p>
+</li>
+<li><p>1.2.2不等式约束问题</p>
+<p>例如：    $$ min  \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p $$</p>
+</li>
+<li><p>1.2.3一般约束问题</p>
+<p>$$ min \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p\ ;;;;;\quad c_i(x)=0,i=p,p+1\cdots p+q $$</p>
+</li>
+<li><p>1.2.4约束问题的整体解</p>
+<p>设 $$ x^*\in D \quad D为可行域 $$ 为全局最优解(以极小点为例)都有</p>
+<p>$$ f(x)\geq f(x^*) $$</p>
+<p>当 $$ x\neq x^* $$</p>
+<p>$$ f(x) &gt; f(x^*) $$</p>
+</li>
+<li><p>1.2.4约束问题的局部解</p>
+<p>设 $$ x^*\in D $$ 为局部解或局部最优解</p>
+<p>存在 $$ \varepsilon&gt;0 $$ 使得当</p>
+<p>$$ x\in D \quad 且\quad|x-x^*|&lt; \varepsilon $$</p>
+<p>$$ f(x) &gt; f(x^*) $$</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>到这个地方已经清楚了约束问题和无约束问题的形式和含义，但是目标函数和约束函数可以是任意的连续函数，对于这样的问题是很复杂的，而一类特殊的优化问题---凸优化问题就是SVM的核心</p>
 
-<span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">#获取网页源代码</span>
-<span class="token keyword">def</span> <span class="token function">get_Html</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>header<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        <span class="token comment" spellcheck="true">#打开页面</span>
-        <span class="token comment" spellcheck="true">#设置使用代理</span>
-        socket<span class="token punctuation">.</span>setdefaulttimeout<span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span>
-        req <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span>None<span class="token punctuation">,</span>header<span class="token punctuation">)</span>
-        response <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>req<span class="token punctuation">,</span>None<span class="token punctuation">,</span><span class="token number">60</span><span class="token punctuation">)</span>
-        Code <span class="token operator">=</span>  response<span class="token punctuation">.</span>code
-        <span class="token keyword">if</span> Code<span class="token operator">!=</span><span class="token number">200</span><span class="token punctuation">:</span>
-            <span class="token comment" spellcheck="true">#响应码不是200</span>
-            <span class="token keyword">print</span> url  <span class="token operator">+</span><span class="token string">"error"</span>
-        the_page <span class="token operator">=</span> response<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span>  the_page
-
-    <span class="token keyword">except</span> Exception<span class="token punctuation">,</span>e<span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">"页面打开出错"</span>
-        <span class="token keyword">print</span> Exception <span class="token punctuation">,</span><span class="token string">":"</span><span class="token punctuation">,</span>e
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-
-    url <span class="token operator">=</span> <span class="token string">"http://mirrors.163.com/centos/7/cloud/x86_64/openstack-kilo/common/"</span>
-    html <span class="token operator">=</span> get_Html<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token punctuation">)</span>
-    bs <span class="token operator">=</span> bs4<span class="token punctuation">.</span>BeautifulSoup<span class="token punctuation">(</span>html<span class="token punctuation">)</span>
-    url_tag <span class="token operator">=</span> bs<span class="token punctuation">.</span>find_all<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
-    number <span class="token operator">=</span> len<span class="token punctuation">(</span>url_tag<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>number<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        name <span class="token operator">=</span> url_tag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'href'</span><span class="token punctuation">]</span>
-        <span class="token keyword">print</span> name <span class="token operator">+</span> <span class="token string">"下载中.."</span>
-        request_url <span class="token operator">=</span> url<span class="token operator">+</span>name
-        data <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>request_url<span class="token punctuation">,</span> stream<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-        <span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"./common/"</span><span class="token operator">+</span>name<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-            <span class="token keyword">for</span> chunk <span class="token keyword">in</span> data<span class="token punctuation">.</span>iter_content<span class="token punctuation">(</span>chunk_size<span class="token operator">=</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> chunk<span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># filter out keep-alive new chunks</span>
-                    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
-                    f<span class="token punctuation">.</span>flush<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<p>需要的同学，可以直接修改url和需要下载的文件目录即可</p>
+<ul>
+<li><p>2凸最优化</p>
+<ul>
+<li><p>2.1凸函数</p>
+<p>$$ x_1,x_2\in S, \lambda \in(0,1) $$</p>
+<p>$$ f(\lambda x_1+(1-\lambda)x_2)\leq \lambda f(x_1)+(1-\lambda)f(x_2) $$</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>2.2 凸约束问题</p>
+<p>如果 $$ f(x) $$ 和 约束函数都为凸函数则问题为凸约束问题</p>
+<p>$$ min \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p\ ;;;;;\quad c_i(x)=0,i=p,p+1\cdots p+q $$</p>
+<p>设D为问题的可行域 则：</p>
+<ul>
+<li>若问题有局部解 $$ x^* $$ ，则 $$ x^* $$ 是问题的整体解</li>
+<li>问题的整体解组成的集合是凸集</li>
+<li>若问题优局部解 $$ x^* $$ , $$ f(x) $$ 是D上的严格凸函数，则 $$ x^* $$ 是问题的唯一整体解</li>
+</ul>
+<p>证明过程如下：</p>
+<p><img src="./png/svm_1.png" alt="Alt text"><br><img src="./png/svm_2.png" alt="Alt text"></p>
+</li>
+</ul>
+<p>1.凸函数（SVM函数九是一个凸函数）</p>
+<p>1.满足kkt条件的二次约束规划所得到的局部最优解一定是全局最优解</p>
+<p>2.全局最优解一定满足kkt条件</p>
+<p><strong><em>SVM基础</em></strong></p>
+<p>$$ margin=(d_+)+(d_-) $$</p>
+<p>$$ Goal:Max{margin} $$</p>
+<p>$$ d_+=\frac{|1-0|}{|w|}=\frac1{|w|} $$ ;   $$ d_-=\frac{|0-(-1)|}{|w|}=\frac1{|w|} $$</p>
+<p>$$ margin=d=\frac2{|w||} $$</p>
+<p>$$ Goal=Max(\frac2{|w|}) $$</p>
+<p>$$ {w^Tx_i+b\geq1 \quad ;;; if;y_i=+1\w^Tx_i+b\leq-1 \quad if;y_i=-1} $$</p>
+<p>$$ y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n $$</p>
+<p>$$ margin=(d_+)+(d_-)=\frac2{|w|}=\frac2{\sqrt{w^Tw}} $$</p>
+<p>$$ Max\rightarrow\frac2{\sqrt{w^Tw}} $$</p>
+<p>$$ Min\rightarrow \frac12w^Tw $$</p>
+<p>多一个 $$\frac12$$ 方便处理，这时问题转换为</p>
+<p>$$ Min \quad \phi(w)=\frac12w^Tw\s \cdot t\quad y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n $$</p>
+<p>进一步处理为了后面的 lagrange multiplier 方便</p>
+<p>$$ y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n \quad 这个式子成立，对它做个变形\ \Rightarrow 1-y_i(w^Tx_i+b)\leq0\quad \forall i=1,2\cdots n $$</p>
+<p>so 我们添加一个系数 $$ \alpha_i\geq0 $$ 使</p>
+<p>$$ \alpha_i（1-y_i(w^Tx_i+b)\geq0\quad \forall i=1,2\cdots n $$</p>
+<p>所以现在问题变为了</p>
+<p>$$ L(w,b,\alpha)=\frac12w^Tw+\alpha_i[y_i(w^Tx_i+b)-1]\<br>\quad=\frac12w^Tw+\alpha_1[1-y_1(w^Tx_1+b)]+\alpha_2[1-y_2(w^Tx_2+b)]+\cdots+\alpha_n[1-y_n(w^Tx_n+b)]\<br>\quad=\frac12w^Tw-\alpha_1[y_1(w^Tx_1+b)-1]-\alpha_2[y_2(w^Tx_2+b)-1]-\cdots\alpha_n[1-y_n(w^Tx_1+b)]\<br>\quad=\frac12w^Tw-\sum_{i=1}^n\alpha_i[y_i(w^Tx_i+b)-1] $$</p>
+<p>$$ \frac{\partial L(w,b,\alpha)}{} $$</p>
+<p>$$ \nabla $$</p>
 
             </div>
             <hr/>
@@ -322,7 +385,7 @@ headers <span class="token operator">=</span> <span class="token punctuation">{<
                     </span>
                     <a href="https://imukever.github.io" class="b-link-green">探索</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/" class="b-link-green">下载网易yum源</a>
+                    <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/" class="b-link-green">凸优化理论</a>
                 </p>
             </div>
         </div>
@@ -344,7 +407,7 @@ headers <span class="token operator">=</span> <span class="token punctuation">{<
         repo: 'imukever.github.io',
         owner: 'imukever',
         admin: ["imukever"],
-        id: '2016-10-07T09-30-00',
+        id: '2016-03-20T10-50-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -365,9 +428,9 @@ headers <span class="token operator">=</span> <span class="token punctuation">{<
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://imukever.github.io/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/';
-        this.page.identifier = '/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/';
-        this.page.title = '下载网易yum源';
+        this.page.url = 'https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/';
+        this.page.identifier = '/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/';
+        this.page.title = '凸优化理论';
     };
     let disqus_shortname = 'imukever';
 
@@ -394,27 +457,27 @@ headers <span class="token operator">=</span> <span class="token punctuation">{<
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/06/03/dai-ma-guan-li/gitlab/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/">
+                <a href="/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Gitlab-CI自动化运行机器学习scikit-learn">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="下载网易yum源">
                         
-                        <span class="card-title">Gitlab-CI自动化运行机器学习scikit-learn</span>
+                        <span class="card-title">下载网易yum源</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行
-python ****.py总是提示我没有安装numpy模块，其实我是安装的了。使用
-sudo gitlab-runner run --help </div>
+                    <div class="summary">最近在搭建opensatck环境，由于所有的部署为离线的状态，所以决定自己搭建一个yum源服务器网上也有一下关于reposync和createrepo的用法，我在使用reposync时很多包出现下载失败，于是自己就写了一个脚本
+
+#!/us</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-03
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-10-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            Mukever
+                            imukever
                             
                         </span>
                     </div>
@@ -422,16 +485,8 @@ sudo gitlab-runner run --help </div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ubuntu/" target="_blank">
-                        <span class="chip bg-color">ubuntu</span>
-                    </a>
-                    
-                    <a href="/tags/Gitlab/" target="_blank">
-                        <span class="chip bg-color">Gitlab</span>
-                    </a>
-                    
-                    <a href="/tags/CI/" target="_blank">
-                        <span class="chip bg-color">CI</span>
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -442,7 +497,7 @@ sudo gitlab-runner run --help </div>
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
                 <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/">
@@ -472,6 +527,7 @@ sudo gitlab-runner run --help </div>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
