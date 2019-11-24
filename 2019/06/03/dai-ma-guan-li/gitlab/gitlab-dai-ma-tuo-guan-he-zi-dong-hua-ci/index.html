@@ -249,34 +249,34 @@ https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/
             <div id="articleContent">
                 <p><strong><em>Gitlab的安装</em></strong></p>
 <p>使用清华源配置Gitlab</p>
-<pre><code>https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/</code></pre><p>  <img src="/.io//gitlab-tuna.png" alt="Alt text"></p>
+<pre><code>https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/</code></pre><p>  <img src="./gitlab-tuna.png" alt="Alt text"></p>
 <p>因为gitlab需要配置邮件提醒，所以需要提前配置163邮箱的stmp</p>
-<p>  <img src="/.io//stmp.png" alt="Alt text"></p>
+<p>  <img src="./stmp.png" alt="Alt text"></p>
 <p>修改配置文件</p>
 <pre><code>sudo vim /etc/gitlab/gitlab.rb</code></pre><p>修改的具体内容如下</p>
-<p>  <img src="/.io//gitlab.png" alt="Alt text"></p>
+<p>  <img src="./gitlab.png" alt="Alt text"></p>
 <p>  gitlab[‘smtp_password’]为自己设置的stmp密码（不是163邮箱的密码）</p>
-<p>  <img src="/.io//gitlab-mail.png" alt="Alt text"></p>
+<p>  <img src="./gitlab-mail.png" alt="Alt text"></p>
 <p>注意：user[‘git_user_email’] 要和gitlab[‘smtp_user_name’]一致</p>
-<p>  <img src="/.io//gitlab-mail-user.png" alt="Alt text"></p>
+<p>  <img src="./gitlab-mail-user.png" alt="Alt text"></p>
 <p>配置完成之后，启动gitlab</p>
 <pre><code>sudo gitlab-ctl configure</code></pre><p>配置成功后出现的界面（至于logo部分，可以自行修改）</p>
-<p>  <img src="/.io//gitlab-login.png" alt="Alt text"></p>
+<p>  <img src="./gitlab-login.png" alt="Alt text"></p>
 <p><strong><em>配置CI</em></strong></p>
 <p>同样使用清华的源，先安装docker，安装时如果出错，请停止gitlab。如果没有错误提示，按照清华源提示操作。</p>
-<pre><code>sudo gitlab-ctl stop</code></pre><p>  <img src="/.io//docker.png" alt="Alt text"></p>
+<pre><code>sudo gitlab-ctl stop</code></pre><p>  <img src="./docker.png" alt="Alt text"></p>
 <p>同样使用清华的源，安装gitlab-ci-multi-runner</p>
-<p>  <img src="/.io//ci.png" alt="Alt text"></p>
+<p>  <img src="./ci.png" alt="Alt text"></p>
 <p>新建一个项目，推到gitlab</p>
 <p>然后配置 .gitlab-ci.yml</p>
-<p>  <img src="/.io//ci-test.png" alt="Alt text"></p>
+<p>  <img src="./ci-test.png" alt="Alt text"></p>
 <p>注册runner</p>
-<p>记住url和token<br>  <img src="/.io//runner.png" alt="Alt text"></p>
-<pre><code>  sudo gitlab-runner register</code></pre><p>  <img src="/.io//register.png" alt="Alt text"></p>
+<p>记住url和token<br>  <img src="./runner.png" alt="Alt text"></p>
+<pre><code>  sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p>
 <p>开启gitlab-runner</p>
 <pre><code>```
 sudo gitlab-runner run
-```</code></pre><p>成功的结果<br>  <img src="/.io//success.png" alt="Alt text"></p>
+```</code></pre><p>成功的结果<br>  <img src="./success.png" alt="Alt text"></p>
 <p>gitlab-ci配置文件教程</p>
 <pre><code>http://docs.gitlab.com/ce/ci/yaml/README.html#cache</code></pre>
             </div>
