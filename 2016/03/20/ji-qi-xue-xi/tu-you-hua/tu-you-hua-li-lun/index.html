@@ -7,9 +7,8 @@
     <meta name="keywords" content="凸优化理论, imukever">
     <meta name="description" content="
 
-
 我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。
-其实我一直想写">
+其实我一直想写一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -248,13 +247,12 @@
             <div id="articleContent">
                 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-
 <p>我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。</p>
 <p>其实我一直想写一篇关于凸优化的blog，只不过每次想写的时候总觉得还欠点推论。（我不是数学专业的学生，反复的看数学相关的paper，反复的改，争取没有误解书中的理论。如果看完之后没有看懂，可以邮件给我回复。）</p>
 <p>下面开始带你走进凸优化的世界。</p>
 <div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="./png/liner.png" alt="Alt Text">
+        <img class="image" src="./liner.png" alt="Alt Text">
     </div>
     <div class="toright">
         一般的直线形式为 $$ min f(x_1,x_2)=x_1^2+x_2^2 $$
@@ -313,7 +311,6 @@
 </ul>
 <p>到这个地方已经清楚了约束问题和无约束问题的形式和含义，但是目标函数和约束函数可以是任意的连续函数，对于这样的问题是很复杂的，而一类特殊的优化问题---凸优化问题就是SVM的核心</p>
 
-
 <ul>
 <li><p>2凸最优化</p>
 <ul>
@@ -335,7 +332,7 @@
 <li>若问题优局部解 $$ x^* $$ , $$ f(x) $$ 是D上的严格凸函数，则 $$ x^* $$ 是问题的唯一整体解</li>
 </ul>
 <p>证明过程如下：</p>
-<p><img src="./png/svm_1.png" alt="Alt text"><br><img src="./png/svm_2.png" alt="Alt text"></p>
+<p><img src="./svm_1.png" alt="Alt text"><br><img src="./svm_2.png" alt="Alt text"></p>
 </li>
 </ul>
 <p>1.凸函数（SVM函数九是一个凸函数）</p>
@@ -385,7 +382,7 @@
                     </span>
                     <a href="https://imukever.github.io" class="b-link-green">探索</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/" class="b-link-green">凸优化理论</a>
+                    <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/" class="b-link-green">凸优化理论</a>
                 </p>
             </div>
         </div>
@@ -428,8 +425,8 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/';
-        this.page.identifier = '/2016/03/20/ji-qi-xue-xi/tu-you-hua/2016-3-20-tu-you-hua-li-lun/';
+        this.page.url = 'https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/';
+        this.page.identifier = '/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/';
         this.page.title = '凸优化理论';
     };
     let disqus_shortname = 'imukever';
@@ -457,27 +454,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/">
+                <a href="/2016/09/05/shu-ju-chu-li/numpy/numpy-chu-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="下载网易yum源">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Numpy 初试">
                         
-                        <span class="card-title">下载网易yum源</span>
+                        <span class="card-title">Numpy 初试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">最近在搭建opensatck环境，由于所有的部署为离线的状态，所以决定自己搭建一个yum源服务器网上也有一下关于reposync和createrepo的用法，我在使用reposync时很多包出现下载失败，于是自己就写了一个脚本
+                    <div class="summary">
+    
+        
+    
 
-#!/us</div>
+&lt;div class=&quot;toright&quot;&gt;
+    &lt;p&gt;
+    《Numpy Beginner&#39;s Guide》是数据挖掘中继《数据挖掘导论》</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-10-07
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-09-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            imukever
+                            Mukever
                             
                         </span>
                     </div>
@@ -485,8 +487,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/ubuntu/" target="_blank">
+                        <span class="chip bg-color">ubuntu</span>
+                    </a>
+                    
+                    <a href="/tags/Numpy/" target="_blank">
+                        <span class="chip bg-color">Numpy</span>
                     </a>
                     
                 </div>
@@ -561,7 +567,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">2.3k</span>
+                <span class="white-color">3.1k</span>
             
 
             
