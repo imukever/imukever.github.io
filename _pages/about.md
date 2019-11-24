@@ -1,8 +1,7 @@
 ---
-title: "About"
-layout: page-sidebar
-permalink: "/about.html"
-image: "/assets/images/screenshot.jpg"
-comments: true
+layout: page
+title: About
+image: '/images/pages/about.jpeg'
 ---
-Made with <i class="fa fa-heart text-danger"></i> by Sal [@wowthemesnet](https://www.wowthemes.net/category/free-themes-templates/).
+
+This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)

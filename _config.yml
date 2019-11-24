@@ -1,65 +1,56 @@
-# Site
-name: 'Mundana'
-description: 'Mundana is a free Jekyll theme for awesome people like you, Medium like.'
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/favicon.ico'
-baseurl: '/mundana-theme-jekyll'
-disqus: 'demowebsite'
-email: 'wowthemesnet@gmail.com'
-mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-include: ["_pages"]
-permalink: /:title/
+# Site settings
+title:            Midan
+email:            your-email@domain.com
+description:      Clean and Fast Jekyll Blog Theme
+baseurl:          '' # The subpath of your site, e.g. /blog
+url:              'http://midan-jekyll.aspirethemes.com' # The base hostname & protocol for your site
+github_username:  aspirethemes
+twitter_username: aspirethemes
 
-# Plugins
-plugins: 
-  - jekyll-feed
-  - jekyll-sitemap
+markdown:  kramdown
+permalink: pretty
+paginate:  12
+sass:
+  style: compressed
+
+gems:
   - jekyll-paginate
-  - jekyll-seo-tag
-  
-authors:
-    sal:
-      name:           Sal
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar1.jpg
-      bio:            "Hi, I am Sal, the author of Mundana, the theme you're currently previewing. I hope you like it!"
-      email:          wowthemesnet@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
+  - jekyll/tagging
 
-    jane:
-      name:           Jane
-      site:           https://www.wowthemes.net
-      avatar:         /assets/images/avatar2.jpg
-      bio:            "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
-      email:          fakemail@gmail.com
-      twitter:        https://twitter.com/wowthemesnet
- 
-# Defaults
+include:
+  - _pages
+
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  pretty
+
+# Pages path
 defaults:
-
-  # all posts
   - scope:
-      path: "_posts"
+      path: '_pages'
     values:
-      layout: post
-      author: sal
-      avatar: /assets/images/avatar1.jpg
-      
-  # all pages
-  - scope:
-      path: "_pages"
-    values:
-      layout: page
-      
-# Syntax
-markdown: kramdown
-highlighter: rouge
+      permalink: /:basename:output_ext
 
-# Paginate
-paginate: 10
-
-
-
-# Exclude metadata and development time dependencies (like Grunt plugins)
-exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]
+# Authors
+authors:
+  ahmad:
+    name:             Ahmad Ajmi
+    bio:              Author & developer of Aspire Themes. Minimalist. I love creating clean and minimal websites.Technical writer at SitePoint.
+    gravatar:         https://s.gravatar.com/avatar/f83141edd9e6339e678648596a403fd5?s=150
+    email:            info@aspirethemes.com
+    website:          http://aspirethemes.com
+    github_username:  ahmadajmi
+    twitter_username: ahmadajmi
