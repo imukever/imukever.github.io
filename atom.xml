@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>闪烁之狐</title>
+  <title>imukever</title>
   
-  <subtitle>闪烁之狐</subtitle>
+  <subtitle>imukever</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://imukever.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://imukever.github.io/</id>
   
   <author>
-    <name>blinkfox</name>
+    <name>imukever</name>
     
   </author>
   
