@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://imukever.github.io/"/>
-  <updated>2019-11-22T00:45:00.000Z</updated>
+  <updated>2019-06-03T13:45:56.000Z</updated>
   <id>https://imukever.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>UML各类关系介绍</title>
-    <link href="https://imukever.github.io/2018/10/22/ruan-jian-she-ji/uml-ge-lei-guan-xi-jie-shao/"/>
-    <id>https://imukever.github.io/2018/10/22/ruan-jian-she-ji/uml-ge-lei-guan-xi-jie-shao/</id>
-    <published>2018-10-22T01:00:00.000Z</published>
-    <updated>2019-11-22T00:45:00.000Z</updated>
+    <title>下载网易yum源</title>
+    <link href="https://imukever.github.io/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/"/>
+    <id>https://imukever.github.io/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/</id>
+    <published>2016-10-07T01:30:00.000Z</published>
+    <updated>2019-06-03T13:45:56.000Z</updated>
     
     <summary type="html">
     
@@ -29,20 +29,15 @@
       
         
         
-          &lt;h2 id=&quot;继承关系（generalization）&quot;&gt;&lt;a href=&quot;#继承关系（generalization）&quot; class=&quot;headerlink&quot;
+          &lt;p&gt;最近在搭建opensatck环境，由于所有的部署为离线的状态，所以决定自己搭建一个yum源服务器&lt;br&gt;网上也有一下关于reposync和createrepo的用法，我在使用reposync时很多包出现下载失败，于是自己就写了一个脚本&lt;/p&gt;
+&lt;pre class=&quot;
         
       
     
     </summary>
     
-      <category term="软件设计" scheme="https://imukever.github.io/categories/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
     
-    
-      <category term="Java" scheme="https://imukever.github.io/tags/Java/"/>
-    
-      <category term="面向对象编程" scheme="https://imukever.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="UML" scheme="https://imukever.github.io/tags/UML/"/>
+      <category term="python" scheme="https://imukever.github.io/tags/python/"/>
     
   </entry>
   
