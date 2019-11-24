@@ -246,13 +246,13 @@ sudo gitlab-runner run --help ">
             <div id="articleContent">
                 <p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p>
 <pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p>
-<pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="../png/gitlab-runner-help.png" alt="Alt text"></p>
+<pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./png/gitlab-runner-help.png" alt="Alt text"></p>
 <p>发现gitlab-runner的编译log可以添加到系统的log</p>
-<pre><code>cat /var/log/syslog</code></pre><p>  <img src="../png/gitlab-syslog.png" alt="Alt text"></p>
+<pre><code>cat /var/log/syslog</code></pre><p>  <img src="./png/gitlab-syslog.png" alt="Alt text"></p>
 <p>可惜没什么用，突然想到在选择executor</p>
-<pre><code>sudo gitlab-runner register</code></pre><p>  <img src="../png/register.png" alt="Alt text"></p>
+<pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./png/register.png" alt="Alt text"></p>
 <p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p>
-<pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="../png/gitlab-python.png" alt="Alt text"></p>
+<pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./png/gitlab-python.png" alt="Alt text"></p>
 
             </div>
             <hr/>
@@ -276,7 +276,7 @@ sudo gitlab-runner run --help ">
                     </span>
                     <a href="https://imukever.github.io" class="b-link-green">探索</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/" class="b-link-green">Gitlab-CI自动化运行机器学习scikit-learn</a>
+                    <a href="/2019/06/03/dai-ma-guan-li/gitlab/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/" class="b-link-green">Gitlab-CI自动化运行机器学习scikit-learn</a>
                 </p>
             </div>
         </div>
@@ -319,8 +319,8 @@ sudo gitlab-runner run --help ">
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://imukever.github.io/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
-        this.page.identifier = '/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
+        this.page.url = 'https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
+        this.page.identifier = '/2019/06/03/dai-ma-guan-li/gitlab/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
         this.page.title = 'Gitlab-CI自动化运行机器学习scikit-learn';
     };
     let disqus_shortname = 'imukever';
@@ -344,28 +344,30 @@ sudo gitlab-runner run --help ">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/">
+                <a href="/2019/06/03/dai-ma-guan-li/gitlab/2016-9-1-gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Gitlab-CI自动化运行机器学习scikit-learn">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Gitlab代码托管和自动化CI">
                         
-                        <span class="card-title">Gitlab-CI自动化运行机器学习scikit-learn</span>
+                        <span class="card-title">Gitlab代码托管和自动化CI</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行
-python ****.py总是提示我没有安装numpy模块，其实我是安装的了。使用
-sudo gitlab-runner run --help </div>
+                    <div class="summary">Gitlab的安装
+使用清华源配置Gitlab
+https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/  
+因为gitlab需要配置邮件提醒，所以需要提前配置163邮箱的stmp
+  
+修改配</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -374,7 +376,6 @@ sudo gitlab-runner run --help </div>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -457,7 +458,7 @@ sudo gitlab-runner run --help </div>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">429</span>
+                <span class="white-color">676</span>
             
 
             
