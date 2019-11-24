@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
+      <link href="/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
+      <url>/2019/06/03/dai-ma-guan-li/2016-9-2-gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</url>
+      
+        <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="../png/gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="../png/gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="../png/register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="../png/gitlab-python.png" alt="Alt text"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> Gitlab </tag>
+            
+            <tag> CI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>下载网易yum源</title>
       <link href="/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/"/>
       <url>/2016/10/07/pa-chong/2016-10-7-xia-zai-wang-yi-yum-yuan/</url>
