@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://imukever.github.io/"/>
-  <updated>2019-11-24T17:16:30.065Z</updated>
+  <updated>2019-11-24T17:16:15.397Z</updated>
   <id>https://imukever.github.io/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
-    <link href="https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
-    <id>https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</id>
-    <published>2019-06-03T13:45:56.000Z</published>
-    <updated>2019-11-24T17:16:30.065Z</updated>
-    
-    <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python ****.py&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总是提示我没有安装numpy模块，其实我是安装的了。&lt;br&gt;使用&lt;/p&gt;
-&lt;pre&gt;&lt;co
-      
-    
-    </summary>
-    
-    
-      <category term="ubuntu" scheme="https://imukever.github.io/tags/ubuntu/"/>
-    
-      <category term="Gitlab" scheme="https://imukever.github.io/tags/Gitlab/"/>
-    
-      <category term="CI" scheme="https://imukever.github.io/tags/CI/"/>
-    
-  </entry>
   
   <entry>
     <title>Gitlab代码托管和自动化CI</title>
@@ -61,6 +32,35 @@
         &lt;p&gt;&lt;strong&gt;&lt;em&gt;Gitlab的安装&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用清华源配置Gitlab&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/&lt;/code&gt;&lt;/pre&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="https://imukever.github.io/tags/ubuntu/"/>
+    
+      <category term="Gitlab" scheme="https://imukever.github.io/tags/Gitlab/"/>
+    
+      <category term="CI" scheme="https://imukever.github.io/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
+    <link href="https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
+    <id>https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</id>
+    <published>2019-06-03T13:45:56.000Z</published>
+    <updated>2019-11-24T17:16:30.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python ****.py&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总是提示我没有安装numpy模块，其实我是安装的了。&lt;br&gt;使用&lt;/p&gt;
+&lt;pre&gt;&lt;co
       
     
     </summary>
@@ -159,12 +159,12 @@
   
   <entry>
     <title>ubuntu系统安装HDFS时配置网络联通</title>
-    <link href="https://imukever.github.io/2016/03/10/hadoop/2016-3-10-ubuntu-xi-tong-an-zhuang-hdfs-shi-pei-zhi-wang-luo-lian-tong/"/>
-    <id>https://imukever.github.io/2016/03/10/hadoop/2016-3-10-ubuntu-xi-tong-an-zhuang-hdfs-shi-pei-zhi-wang-luo-lian-tong/</id>
+    <link href="https://imukever.github.io/2016/03/10/hadoop/ubuntu-xi-tong-an-zhuang-hdfs-shi-pei-zhi-wang-luo-lian-tong/"/>
+    <id>https://imukever.github.io/2016/03/10/hadoop/ubuntu-xi-tong-an-zhuang-hdfs-shi-pei-zhi-wang-luo-lian-tong/</id>
     <published>2016-03-10T14:48:00.000Z</published>
-    <updated>2019-11-24T16:41:44.348Z</updated>
+    <updated>2019-11-24T17:29:11.946Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>配置本地环境</strong></p><p> ps:本机8G内存(可以模拟3台虚拟机&lt;总6G&gt;+本地2G)</p><p>  1.主机采用伪分布,用于测试所写的MR程序,然后将所编译的jar包通过scp上传到HDFS集群．这样就可以DeBug MR</p><p>  由于我启动了HBase，所以在jvm中会有HBase的进程</p><p>  <img src="./png/1460644826484.png" alt="Alt text"><br> ２.安装3台虚拟机</p><p>  2.1)虚拟机网络问题:<br>  VBox可以使用多网卡,所以可以装2个网卡,一个用于和本地主机公用Net网络,另一个用于虚拟机内部的3台互联.</p><p>  <strong>安装一个slave节点,其他的节点可以通过复制虚拟机实现.</strong></p><p>2.2)网卡配置<br>  <img src="./png/1460645878161.png" alt="Alt text"></p><p>  ![Alt text](./png/2016-04-14 22:58:32屏幕截图.png)</p><p>手动为master和slave的桥接网卡分配ip</p><p>例如:</p><pre class=" language-cmd"><code class="language-cmd">master :ip 192.168.1.1 掩码255.255.255.0 网关192.168.1.0slave  :ip 192.168.1.2 掩码255.255.255.0 网关192.168.1.0</code></pre><p>  手动测试在 master 上 <code>ping 192.168.1.2</code> 有反馈,则为ip搞定</p><p>  2.3)其他配置</p><p>  1.开放主机22000端口</p><p><code>sudo ufw allow 22000</code></p><p>  2.虚拟机做端口映射</p><pre class=" language-java"><code class="language-java"><span class="token number">22000</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">22</span> <span class="token comment" spellcheck="true">//(ssh scp 默认22 端口)</span><span class="token number">22001</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">50020</span><span class="token number">22002</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">9000</span></code></pre><p>2.4)scp向虚拟机传输文件</p><pre class=" language-python"><code class="language-python">scp <span class="token operator">-</span>P <span class="token number">22000</span> 文件路径 hadoop@localhost<span class="token punctuation">:</span><span class="token operator">~</span><span class="token operator">/</span>    <span class="token comment" spellcheck="true">#大写P_小写不行</span></code></pre><p>  这时可以将jdk包和hadoop包通过scp传到虚拟机内部现在4台电脑你自己可以通过自定义端口来实现互相联通</p><p>  其实做共享文件夹也可以</p><pre class=" language-cmd"><code class="language-cmd">sudo mount -t vboxsf 共享文件夹名称   /mnt/</code></pre><p>  要想自动挂载的话，可以在<code>/etc/fstab</code>中添加一项<br>  共享文件夹名称</p><pre class=" language-cmd"><code class="language-cmd">/mnt/ vboxsf rw,gid=100,uid=1000,auto 0 0`</code></pre><p>剩下的任务就需要配置jdk和hadoop了,可以去官网上查看配置信息</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>配置本地环境</strong></p><p> ps:本机8G内存(可以模拟3台虚拟机&lt;总6G&gt;+本地2G)</p><p>  1.主机采用伪分布,用于测试所写的MR程序,然后将所编译的jar包通过scp上传到HDFS集群．这样就可以DeBug MR</p><p>  由于我启动了HBase，所以在jvm中会有HBase的进程</p><p>  <img src="./1460644826484.png" alt="Alt text"><br> ２.安装3台虚拟机</p><p>  2.1)虚拟机网络问题:<br>  VBox可以使用多网卡,所以可以装2个网卡,一个用于和本地主机公用Net网络,另一个用于虚拟机内部的3台互联.</p><p>  <strong>安装一个slave节点,其他的节点可以通过复制虚拟机实现.</strong></p><p>2.2)网卡配置<br>  <img src="./1460645878161.png" alt="Alt text"></p><p>  ![Alt text](./2016-04-14 22:58:32屏幕截图.png)</p><p>手动为master和slave的桥接网卡分配ip</p><p>例如:</p><pre class=" language-cmd"><code class="language-cmd">master :ip 192.168.1.1 掩码255.255.255.0 网关192.168.1.0slave  :ip 192.168.1.2 掩码255.255.255.0 网关192.168.1.0</code></pre><p>  手动测试在 master 上 <code>ping 192.168.1.2</code> 有反馈,则为ip搞定</p><p>  2.3)其他配置</p><p>  1.开放主机22000端口</p><p><code>sudo ufw allow 22000</code></p><p>  2.虚拟机做端口映射</p><pre class=" language-java"><code class="language-java"><span class="token number">22000</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">22</span> <span class="token comment" spellcheck="true">//(ssh scp 默认22 端口)</span><span class="token number">22001</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">50020</span><span class="token number">22002</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token number">9000</span></code></pre><p>2.4)scp向虚拟机传输文件</p><pre class=" language-python"><code class="language-python">scp <span class="token operator">-</span>P <span class="token number">22000</span> 文件路径 hadoop@localhost<span class="token punctuation">:</span><span class="token operator">~</span><span class="token operator">/</span>    <span class="token comment" spellcheck="true">#大写P_小写不行</span></code></pre><p>  这时可以将jdk包和hadoop包通过scp传到虚拟机内部现在4台电脑你自己可以通过自定义端口来实现互相联通</p><p>  其实做共享文件夹也可以</p><pre class=" language-cmd"><code class="language-cmd">sudo mount -t vboxsf 共享文件夹名称   /mnt/</code></pre><p>  要想自动挂载的话，可以在<code>/etc/fstab</code>中添加一项<br>  共享文件夹名称</p><pre class=" language-cmd"><code class="language-cmd">/mnt/ vboxsf rw,gid=100,uid=1000,auto 0 0`</code></pre><p>剩下的任务就需要配置jdk和hadoop了,可以去官网上查看配置信息</p>]]></content>
     
     <summary type="html">
     
