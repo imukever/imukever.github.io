@@ -1,0 +1,565 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="imukever">
+    <meta name="description" content="如何使用1.拉取docker 镜像    
+docker pull mukever/opencap:v0.12.启动镜像
+sudo docker run --ipc=host -p 8888:8888 --name opencap open">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>探索</title>
+   
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+        code[class*="language-"], pre[class*="language-"] {
+            white-space: pre !important;
+        }
+        
+    </style>
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+<body>
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">探索</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">探索</div>
+        <div class="logo-desc">
+            
+            路漫漫其修远兮吾将上下而求索
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-11-25
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        587
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        2 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>1.拉取docker 镜像    </p>
+<pre><code>docker pull mukever/opencap:v0.1</code></pre><p>2.启动镜像</p>
+<pre><code>sudo docker run --ipc=host -p 8888:8888 --name opencap opencap:v0.1 jupyter notebook  --ip=0.0.0.0  --no-browser  --allow-root </code></pre><p>3.docker镜像中已经存放了模型，可以自行使用。 可以识别10个字符以内的中英验证码。验证码输出为大写，对大小写不敏感。</p>
+<p>4.有兴趣的朋友，可以star。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">%</span>matplotlib notebook
+<span class="token comment" spellcheck="true"># import d2lzh as d2l</span>
+<span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> mpimg</code></pre>
+<pre class=" language-python"><code class="language-python">! ls <span class="token operator">-</span>al models<span class="token operator">/</span>caffemodel
+! pwd</code></pre>
+<pre><code>total 44512
+drwxr-xr-x 2 root root     4096 Nov  3 14:59 .
+drwxr-xr-x 3 root root     4096 Nov  3 14:49 ..
+-rw-r--r-- 1 root root 45535232 Oct 12 06:50 caffe.caffemodel
+-rw-r--r-- 1 root root    20754 Oct 12 06:50 deploy.prototxt
+-rw-r--r-- 1 root root     6148 Nov  3 15:01 .DS_Store
+-rw-r--r-- 1 root root       73 Oct 12 06:50 label-map.txt
+/</code></pre><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> caffe
+caffe<span class="token punctuation">.</span>set_mode_cpu<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+BASE_DIR <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span><span class="token string">'__file__'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+deploy <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'models/caffemodel/deploy.prototxt'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># deploy文件</span>
+caffe_model <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'models/caffemodel/caffe.caffemodel'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 训练好的 caffemodel</span>
+labels_filename <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'models/caffemodel/label-map.txt'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 类别名称文件，将数字标签转换回类别名称</span>
+LABELS <span class="token operator">=</span> np<span class="token punctuation">.</span>loadtxt<span class="token punctuation">(</span>labels_filename<span class="token punctuation">,</span> str<span class="token punctuation">,</span> delimiter<span class="token operator">=</span><span class="token string">'\n'</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#读取类别名称文件</span>
+CAFFENET <span class="token operator">=</span> caffe<span class="token punctuation">.</span>Net<span class="token punctuation">(</span>deploy<span class="token punctuation">,</span> caffe_model<span class="token punctuation">,</span> caffe<span class="token punctuation">.</span>TEST<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 加载model和network</span>
+
+<span class="token comment" spellcheck="true"># 图片预处理设置</span>
+Transformer <span class="token operator">=</span> caffe<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Transformer<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'data'</span><span class="token punctuation">:</span> CAFFENET<span class="token punctuation">.</span>blobs<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>shape<span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 设定图片的shape格式(1,3,28,28)</span>
+Transformer<span class="token punctuation">.</span>set_transpose<span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 改变维度的顺序，由原始图片(28,28,3)变为(3,28,28)</span>
+Transformer<span class="token punctuation">.</span>set_mean<span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">104</span><span class="token punctuation">,</span> <span class="token number">117</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 减去均值，前面训练模型时没有减均值，这儿就不用</span>
+Transformer<span class="token punctuation">.</span>set_raw_scale<span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 缩放到【0，255】之间</span>
+Transformer<span class="token punctuation">.</span>set_channel_swap<span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 交换通道，将图片由RGB变为BGR</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python">! rm <span class="token operator">-</span>rf TEST<span class="token operator">/</span><span class="token punctuation">.</span>DS_Store</code></pre>
+<pre class=" language-python"><code class="language-python">TEST_IMG_PATH <span class="token operator">=</span> <span class="token string">'TEST'</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python">image_files_list <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>TEST_IMG_PATH<span class="token punctuation">)</span>
+<span class="token keyword">for</span> image_file_name <span class="token keyword">in</span> image_files_list<span class="token punctuation">:</span>
+    im <span class="token operator">=</span> caffe<span class="token punctuation">.</span>io<span class="token punctuation">.</span>load_image<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>TEST_IMG_PATH<span class="token punctuation">,</span>image_file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 加载图片</span>
+    <span class="token comment" spellcheck="true">### detail</span>
+    CAFFENET<span class="token punctuation">.</span>blobs<span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token operator">=</span> Transformer<span class="token punctuation">.</span>preprocess<span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> im<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 执行上面设置的图片预处理操作，并将图片载入到blob中</span>
+    <span class="token comment" spellcheck="true">### predict</span>
+    CAFFENET<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    Predisct <span class="token operator">=</span> <span class="token string">""</span>
+    pre_st <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># print('---------------------\n',net.blobs['fc1000'+str(i)].data)</span>
+        prob <span class="token operator">=</span> CAFFENET<span class="token punctuation">.</span>blobs<span class="token punctuation">[</span><span class="token string">'fc1000'</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>flatten<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 取出最后一层（Softmax）属于某个类别的概率值，并打印</span>
+        <span class="token comment" spellcheck="true"># print (prob)</span>
+        order <span class="token operator">=</span> prob<span class="token punctuation">.</span>argsort<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 将概率值排序，取出最大值所在的序号</span>
+        <span class="token comment" spellcheck="true"># print(order)</span>
+        Predisct<span class="token operator">+=</span>LABELS<span class="token punctuation">[</span>order<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 将该序号转换成对应的类别名称，并打印</span>
+    image <span class="token operator">=</span> Image<span class="token punctuation">.</span>open<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>TEST_IMG_PATH<span class="token punctuation">,</span>image_file_name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>Predisct<span class="token punctuation">)</span>
+    display<span class="token punctuation">(</span>image<span class="token punctuation">)</span></code></pre>
+<pre><code>79RG------</code></pre><p><img src="output_6_1.png" alt="png"></p>
+<pre><code>NGEF------</code></pre><p><img src="output_6_3.png" alt="png"></p>
+<pre><code>YQ8V------</code></pre><p><img src="output_6_5.png" alt="png"></p>
+<pre><code>GGFK------</code></pre><p><img src="output_6_7.png" alt="png"></p>
+<pre><code>QNKKD-----</code></pre><p><img src="output_6_9.png" alt="png"></p>
+<pre><code>N8SE------</code></pre><p><img src="output_6_11.png" alt="png"></p>
+
+            </div>
+            <hr/>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://imukever.github.io" class="b-link-green">探索</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/" class="b-link-green"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '9bea526f8c1509fd16b7',
+        clientSecret: 'eceae2edfad3dcfe080a9ee63efba8f94ae78a42',
+        repo: 'imukever.github.io',
+        owner: 'imukever',
+        admin: ["imukever"],
+        id: '2019-11-25T06-14-00',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://imukever.github.io/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/';
+        this.page.identifier = '/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/';
+        this.page.title = '';
+    };
+    let disqus_shortname = 'imukever';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">如何使用1.拉取docker 镜像    
+docker pull mukever/opencap:v0.12.启动镜像
+sudo docker run --ipc=host -p 8888:8888 --name opencap open</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            imukever
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/cap/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">如何使用1.拉取docker 镜像    
+docker pull mukever/opencap:v0.12.启动镜像
+sudo docker run --ipc=host -p 8888:8888 --name opencap open</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            imukever
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">4.2k</span>
+            
+
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/imukever/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:imukever@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=948433271" class="tooltipped" data-tooltip="QQ联系我: 948433271" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>
