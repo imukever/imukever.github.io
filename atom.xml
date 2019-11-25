@@ -61,35 +61,6 @@
   </entry>
   
   <entry>
-    <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
-    <link href="https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
-    <id>https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</id>
-    <published>2019-06-03T13:45:56.000Z</published>
-    <updated>2019-11-24T17:16:30.065Z</updated>
-    
-    <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python ****.py&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总是提示我没有安装numpy模块，其实我是安装的了。&lt;br&gt;使用&lt;/p&gt;
-&lt;pre&gt;&lt;co
-      
-    
-    </summary>
-    
-    
-      <category term="ubuntu" scheme="https://imukever.github.io/tags/ubuntu/"/>
-    
-      <category term="Gitlab" scheme="https://imukever.github.io/tags/Gitlab/"/>
-    
-      <category term="CI" scheme="https://imukever.github.io/tags/CI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Gitlab代码托管和自动化CI</title>
     <link href="https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/"/>
     <id>https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/</id>
@@ -105,6 +76,35 @@
         &lt;p&gt;&lt;strong&gt;&lt;em&gt;Gitlab的安装&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;使用清华源配置Gitlab&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/&lt;/code&gt;&lt;/pre&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="https://imukever.github.io/tags/ubuntu/"/>
+    
+      <category term="Gitlab" scheme="https://imukever.github.io/tags/Gitlab/"/>
+    
+      <category term="CI" scheme="https://imukever.github.io/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
+    <link href="https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
+    <id>https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</id>
+    <published>2019-06-03T13:45:56.000Z</published>
+    <updated>2019-11-24T17:16:30.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python ****.py&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;总是提示我没有安装numpy模块，其实我是安装的了。&lt;br&gt;使用&lt;/p&gt;
+&lt;pre&gt;&lt;co
       
     
     </summary>
