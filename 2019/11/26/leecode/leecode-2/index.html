@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="凸优化理论, imukever">
-    <meta name="description" content="我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。
-其实我一直想写一篇关">
+    <meta name="keywords" content="leetcode 简单题2, imukever">
+    <meta name="description" content="题目给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+您可以假设除了数字 0 之外，这">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>凸优化理论 | 探索</title>
+    <title>leetcode 简单题2 | 探索</title>
    
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -162,13 +163,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        凸优化理论
+                        leetcode 简单题2
                     </div>
                 </div>
             </div>
@@ -190,16 +191,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ubuntu/" target="_blank">
-                                <span class="chip bg-color">ubuntu</span>
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/凸优化/" target="_blank">
-                                <span class="chip bg-color">凸优化</span>
-                            </a>
-                        
-                            <a href="/tags/SVM/" target="_blank">
-                                <span class="chip bg-color">SVM</span>
+                            <a href="/tags/leetcode/" target="_blank">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -213,21 +210,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2016-03-20
+                    2019-11-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.1k
+                        301
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        1 分
                     </div>
                     
                 
@@ -243,109 +240,51 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。</p>
-<p>其实我一直想写一篇关于凸优化的blog，只不过每次想写的时候总觉得还欠点推论。（我不是数学专业的学生，反复的看数学相关的paper，反复的改，争取没有误解书中的理论。如果看完之后没有看懂，可以邮件给我回复。）</p>
-<p>下面开始带你走进凸优化的世界。</p>
-<p><img src="./liner.png" alt></p>
-<p>一般的直线形式为 $$ min f(x_1,x_2)=x_1^2+x_2^2 $$</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p>
+<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<p>示例：</p>
+<p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/add-two-numbers" target="_blank" rel="noopener">https://leetcode-cn.com/problems/add-two-numbers</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>用头指针指向结果</p>
 <ul>
-<li><p>1.最优化问题</p>
-<ul>
-<li><p>1.1无约束问题</p>
-<p>例如：  $$ min f(x_1,x_2)=x_1^2+x_2^2 $$</p>
-<p>$$ min f(x_1,x_2)=x_1^2+x_2^2 $$</p>
-<ul>
-<li><p>1.1.1无约束问题的整体解</p>
-<p>设 $$ x^* $$ 为全局最优解(以极小点为例)</p>
-<p>$$ f(x^<em>) &lt; f(x)\quad  \forall x\neq x^</em> $$</p>
-</li>
-<li><p>1.1.2无约束问题的局部解</p>
-<p>设 $$ x^*\in\Re^n $$ 为局部解或局部最优解(以极小点为例)</p>
-<p>存在 $$ \varepsilon&gt;0 $$ 使得 $$ |x-x^*|&lt; \varepsilon $$</p>
-<p>总有</p>
-<p>$$ f(x^<em>)\leq f(x)\quad  \forall x\neq x^</em> $$</p>
-</li>
-</ul>
-</li>
-<li><p>1.2约束问题</p>
-<ul>
-<li><p>1.2.1等式约束问题</p>
-<p>例如：    $$ min \quad  f(x)\s\cdot t\quad c_i(x)=0,i=1,2\cdots p $$</p>
-<p>p：为p个等式限制条件</p>
-</li>
-<li><p>1.2.2不等式约束问题</p>
-<p>例如：    $$ min  \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p $$</p>
-</li>
-<li><p>1.2.3一般约束问题</p>
-<p>$$ min \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p\ ;;;;;\quad c_i(x)=0,i=p,p+1\cdots p+q $$</p>
-</li>
-<li><p>1.2.4约束问题的整体解</p>
-<p>设 $$ x^*\in D \quad D为可行域 $$ 为全局最优解(以极小点为例)都有</p>
-<p>$$ f(x)\geq f(x^*) $$</p>
-<p>当 $$ x\neq x^* $$</p>
-<p>$$ f(x) &gt; f(x^*) $$</p>
-</li>
-<li><p>1.2.4约束问题的局部解</p>
-<p>设 $$ x^*\in D $$ 为局部解或局部最优解</p>
-<p>存在 $$ \varepsilon&gt;0 $$ 使得当</p>
-<p>$$ x\in D \quad 且\quad|x-x^*|&lt; \varepsilon $$</p>
-<p>$$ f(x) &gt; f(x^*) $$</p>
-</li>
+<li>同时遍历两个list列表 直到数据扫描完毕<ul>
+<li>取出对应值计算商和余数 （number）</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p>到这个地方已经清楚了约束问题和无约束问题的形式和含义，但是目标函数和约束函数可以是任意的连续函数，对于这样的问题是很复杂的，而一类特殊的优化问题---凸优化问题就是SVM的核心</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Definition for singly-linked list.</span>
+<span class="token comment" spellcheck="true"># class ListNode:</span>
+<span class="token comment" spellcheck="true">#     def __init__(self, x):</span>
+<span class="token comment" spellcheck="true">#         self.val = x</span>
+<span class="token comment" spellcheck="true">#         self.next = None</span>
 
-<ul>
-<li><p>2凸最优化</p>
-<ul>
-<li><p>2.1凸函数</p>
-<p>$$ x_1,x_2\in S, \lambda \in(0,1) $$</p>
-<p>$$ f(\lambda x_1+(1-\lambda)x_2)\leq \lambda f(x_1)+(1-\lambda)f(x_2) $$</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>2.2 凸约束问题</p>
-<p>如果 $$ f(x) $$ 和 约束函数都为凸函数则问题为凸约束问题</p>
-<p>$$ min \quad f(x)\s\cdot t\quad c_i(x)\leq0,i=1,2\cdots p\ ;;;;;\quad c_i(x)=0,i=p,p+1\cdots p+q $$</p>
-<p>设D为问题的可行域 则：</p>
-<ul>
-<li>若问题有局部解 $$ x^* $$ ，则 $$ x^* $$ 是问题的整体解</li>
-<li>问题的整体解组成的集合是凸集</li>
-<li>若问题优局部解 $$ x^* $$ , $$ f(x) $$ 是D上的严格凸函数，则 $$ x^* $$ 是问题的唯一整体解</li>
-</ul>
-<p>证明过程如下：</p>
-<p><img src="./svm_1.png" alt="Alt text"><br><img src="./svm_2.png" alt="Alt text"></p>
-</li>
-</ul>
-<p>1.凸函数（SVM函数九是一个凸函数）</p>
-<p>1.满足kkt条件的二次约束规划所得到的局部最优解一定是全局最优解</p>
-<p>2.全局最优解一定满足kkt条件</p>
-<p><strong><em>SVM基础</em></strong></p>
-<p>$$ margin=(d_+)+(d_-) $$</p>
-<p>$$ Goal:Max{margin} $$</p>
-<p>$$ d_+=\frac{|1-0|}{|w|}=\frac1{|w|} $$ ;   $$ d_-=\frac{|0-(-1)|}{|w|}=\frac1{|w|} $$</p>
-<p>$$ margin=d=\frac2{|w||} $$</p>
-<p>$$ Goal=Max(\frac2{|w|}) $$</p>
-<p>$$ {w^Tx_i+b\geq1 \quad ;;; if;y_i=+1\w^Tx_i+b\leq-1 \quad if;y_i=-1} $$</p>
-<p>$$ y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n $$</p>
-<p>$$ margin=(d_+)+(d_-)=\frac2{|w|}=\frac2{\sqrt{w^Tw}} $$</p>
-<p>$$ Max\rightarrow\frac2{\sqrt{w^Tw}} $$</p>
-<p>$$ Min\rightarrow \frac12w^Tw $$</p>
-<p>多一个 $$\frac12$$ 方便处理，这时问题转换为</p>
-<p>$$ Min \quad \phi(w)=\frac12w^Tw\s \cdot t\quad y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n $$</p>
-<p>进一步处理为了后面的 lagrange multiplier 方便</p>
-<p>$$ y_i(w^Tx_i+b)\geq1\quad \forall i=1,2\cdots n \quad 这个式子成立，对它做个变形\ \Rightarrow 1-y_i(w^Tx_i+b)\leq0\quad \forall i=1,2\cdots n $$</p>
-<p>so 我们添加一个系数 $$ \alpha_i\geq0 $$ 使</p>
-<p>$$ \alpha_i（1-y_i(w^Tx_i+b)\geq0\quad \forall i=1,2\cdots n $$</p>
-<p>所以现在问题变为了</p>
-<p>$$ L(w,b,\alpha)=\frac12w^Tw+\alpha_i[y_i(w^Tx_i+b)-1]\<br>\quad=\frac12w^Tw+\alpha_1[1-y_1(w^Tx_1+b)]+\alpha_2[1-y_2(w^Tx_2+b)]+\cdots+\alpha_n[1-y_n(w^Tx_n+b)]\<br>\quad=\frac12w^Tw-\alpha_1[y_1(w^Tx_1+b)-1]-\alpha_2[y_2(w^Tx_2+b)-1]-\cdots\alpha_n[1-y_n(w^Tx_1+b)]\<br>\quad=\frac12w^Tw-\sum_{i=1}^n\alpha_i[y_i(w^Tx_i+b)-1] $$</p>
-<p>$$ \frac{\partial L(w,b,\alpha)}{} $$</p>
-<p>$$ \nabla $$</p>
+<span class="token keyword">def</span> <span class="token function">calculate_number_and_flag</span><span class="token punctuation">(</span>number1<span class="token punctuation">,</span> number2<span class="token punctuation">,</span> flag<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    number <span class="token operator">=</span> <span class="token punctuation">(</span>number1 <span class="token operator">+</span> number2 <span class="token operator">+</span>  flag<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">10</span>
+    more_than_ten_flag <span class="token operator">=</span>  <span class="token punctuation">(</span>number1 <span class="token operator">+</span> number2 <span class="token operator">+</span>  flag<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">10</span>
+    <span class="token keyword">return</span> number<span class="token punctuation">,</span> more_than_ten_flag
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l1<span class="token punctuation">:</span> ListNode<span class="token punctuation">,</span> l2<span class="token punctuation">:</span> ListNode<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> ListNode<span class="token punctuation">:</span>
+
+        result <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        more_than_ten_flag <span class="token operator">=</span> <span class="token number">0</span>
+        head_point <span class="token operator">=</span> result
+        <span class="token keyword">while</span> l1 <span class="token operator">or</span> l2 <span class="token punctuation">:</span>
+            number1 <span class="token operator">=</span> l1<span class="token punctuation">.</span>val <span class="token keyword">if</span> l1 <span class="token keyword">else</span> <span class="token number">0</span>
+            number2 <span class="token operator">=</span> l2<span class="token punctuation">.</span>val <span class="token keyword">if</span> l2 <span class="token keyword">else</span> <span class="token number">0</span>
+            number<span class="token punctuation">,</span> more_than_ten_flag <span class="token operator">=</span> calculate_number_and_flag<span class="token punctuation">(</span>number1<span class="token punctuation">,</span> number2<span class="token punctuation">,</span> more_than_ten_flag<span class="token punctuation">)</span>
+            head_point<span class="token punctuation">.</span>next <span class="token operator">=</span> ListNode<span class="token punctuation">(</span>number<span class="token punctuation">)</span>
+            head_point <span class="token operator">=</span> head_point<span class="token punctuation">.</span>next
+            <span class="token keyword">if</span> l1 <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
+                l1 <span class="token operator">=</span> l1<span class="token punctuation">.</span>next
+            <span class="token keyword">if</span> l2 <span class="token keyword">is</span> <span class="token operator">not</span> None<span class="token punctuation">:</span>
+                l2 <span class="token operator">=</span> l2<span class="token punctuation">.</span>next
+
+        <span class="token keyword">if</span> more_than_ten_flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            head_point<span class="token punctuation">.</span>next <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">.</span>next
+</code></pre>
 
             </div>
             <hr/>
@@ -369,7 +308,7 @@
                     </span>
                     <a href="https://imukever.github.io" class="b-link-green">探索</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/" class="b-link-green">凸优化理论</a>
+                    <a href="/2019/11/26/leecode/leecode-2/" class="b-link-green">leetcode 简单题2</a>
                 </p>
             </div>
         </div>
@@ -391,7 +330,7 @@
         repo: 'imukever.github.io',
         owner: 'imukever',
         admin: ["imukever"],
-        id: '2016-03-20T10-50-00',
+        id: '2019-11-26T10-50-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -412,9 +351,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/';
-        this.page.identifier = '/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/';
-        this.page.title = '凸优化理论';
+        this.page.url = 'https://imukever.github.io/2019/11/26/leecode/leecode-2/';
+        this.page.identifier = '/2019/11/26/leecode/leecode-2/';
+        this.page.title = 'leetcode 简单题2';
     };
     let disqus_shortname = 'imukever';
 
@@ -441,26 +380,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2016/09/05/shu-ju-chu-li/numpy/numpy-chu-shi/">
+                <a href="/2019/11/26/leecode/leecode-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Numpy 初试">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="leetcode 简单题1">
                         
-                        <span class="card-title">Numpy 初试</span>
+                        <span class="card-title">leetcode 简单题1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary"> 
-《Numpy Beginner&#39;s Guide》是数据挖掘中继《数据挖掘导论》之后又一本非常棒的书，尽管才开始学习它，但是它的强大让我深深的爱上了它的cool。首先是最基本的安装问题，由于我是ubuntu er，So安装的过程比</div>
+                    <div class="summary">题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+来源：力扣（LeetCode）</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-09-05
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-26
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            Mukever
+                            imukever
                             
                         </span>
                     </div>
@@ -468,12 +408,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ubuntu/" target="_blank">
-                        <span class="chip bg-color">ubuntu</span>
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/Numpy/" target="_blank">
-                        <span class="chip bg-color">Numpy</span>
+                    <a href="/tags/leetcode/" target="_blank">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -487,28 +427,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2016/03/10/hadoop/ubuntu-xi-tong-an-zhuang-hdfs-shi-pei-zhi-wang-luo-lian-tong/">
+                <a href="/2019/11/25/xiao-lu/dmind/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="ubuntu系统安装HDFS时配置网络联通">
+                        <img src="/medias/featureimages/29.jpg" class="responsive-img" alt="效率 Jupyter Notebook 使用思维导图">
                         
-                        <span class="card-title">ubuntu系统安装HDFS时配置网络联通</span>
+                        <span class="card-title">效率 Jupyter Notebook 使用思维导图</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">配置本地环境
- ps:本机8G内存(可以模拟3台虚拟机&lt;总6G&gt;+本地2G)
-  1.主机采用伪分布,用于测试所写的MR程序,然后将所编译的jar包通过scp上传到HDFS集群．这样就可以DeBug MR
-  由于我启动了HBa</div>
+                    <div class="summary">%load_ext dmind
+%dmindheader
+/*!
+ * ====================================================
+ * kity - v2.0.4 - 2016-08-22
+ </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2016-03-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            Mukever
+                            imukever
                             
                         </span>
                     </div>
@@ -516,12 +458,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ubuntu/" target="_blank">
-                        <span class="chip bg-color">ubuntu</span>
+                    <a href="/tags/效率/" target="_blank">
+                        <span class="chip bg-color">效率</span>
                     </a>
                     
-                    <a href="/tags/HDFS/" target="_blank">
-                        <span class="chip bg-color">HDFS</span>
+                    <a href="/tags/Jupyter-Notebook/" target="_blank">
+                        <span class="chip bg-color">Jupyter Notebook</span>
+                    </a>
+                    
+                    <a href="/tags/思维导图/" target="_blank">
+                        <span class="chip bg-color">思维导图</span>
                     </a>
                     
                 </div>
