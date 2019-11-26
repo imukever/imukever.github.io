@@ -4,10 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Gitlab-CI自动化运行机器学习scikit-learn, imukever">
-    <meta name="description" content="在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行
-python ****.py总是提示我没有安装numpy模块，其实我是安装的了。使用
-sudo gitlab-runner run --help ">
+    <meta name="keywords" content="leetcode 简答题1, imukever">
+    <meta name="description" content="题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+来源：力扣（LeetCode）">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@ sudo gitlab-runner run --help ">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Gitlab-CI自动化运行机器学习scikit-learn | 探索</title>
+    <title>leetcode 简答题1 | 探索</title>
    
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -163,13 +163,13 @@ sudo gitlab-runner run --help ">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Gitlab-CI自动化运行机器学习scikit-learn
+                        leetcode 简答题1
                     </div>
                 </div>
             </div>
@@ -191,16 +191,12 @@ sudo gitlab-runner run --help ">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ubuntu/" target="_blank">
-                                <span class="chip bg-color">ubuntu</span>
+                            <a href="/tags/算法/" target="_blank">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/Gitlab/" target="_blank">
-                                <span class="chip bg-color">Gitlab</span>
-                            </a>
-                        
-                            <a href="/tags/CI/" target="_blank">
-                                <span class="chip bg-color">CI</span>
+                            <a href="/tags/leetcode/" target="_blank">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -214,14 +210,14 @@ sudo gitlab-runner run --help ">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-06-03
+                    2016-03-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        120
+                        192
                     </div>
                     
 
@@ -244,15 +240,25 @@ sudo gitlab-runner run --help ">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p>
-<pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p>
-<pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p>
-<p>发现gitlab-runner的编译log可以添加到系统的log</p>
-<pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p>
-<p>可惜没什么用，突然想到在选择executor</p>
-<pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p>
-<p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p>
-<pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<p>来源：力扣（LeetCode） 链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用字典记录出现过的数字下标</p>
+<p>当a + b == target时，a == target - b。</p>
+<p>遍历数组，当前数字为b，如果字典中存在 a == target - b，返回 a 和 b 的下标。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        data_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token keyword">for</span> i<span class="token punctuation">,</span> num <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> target <span class="token operator">-</span> num <span class="token keyword">in</span> data_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token punctuation">[</span>data_dict<span class="token punctuation">[</span> target <span class="token operator">-</span> num<span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">]</span>
+            data_dict<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> i
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
 
             </div>
             <hr/>
@@ -276,7 +282,7 @@ sudo gitlab-runner run --help ">
                     </span>
                     <a href="https://imukever.github.io" class="b-link-green">探索</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/" class="b-link-green">Gitlab-CI自动化运行机器学习scikit-learn</a>
+                    <a href="/2016/03/20/leecode/leecode-1/" class="b-link-green">leetcode 简答题1</a>
                 </p>
             </div>
         </div>
@@ -298,7 +304,7 @@ sudo gitlab-runner run --help ">
         repo: 'imukever.github.io',
         owner: 'imukever',
         admin: ["imukever"],
-        id: '2019-06-03T21-45-56',
+        id: '2016-03-20T10-50-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -319,9 +325,9 @@ sudo gitlab-runner run --help ">
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://imukever.github.io/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
-        this.page.identifier = '/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/';
-        this.page.title = 'Gitlab-CI自动化运行机器学习scikit-learn';
+        this.page.url = 'https://imukever.github.io/2016/03/20/leecode/leecode-1/';
+        this.page.identifier = '/2016/03/20/leecode/leecode-1/';
+        this.page.title = 'leetcode 简答题1';
     };
     let disqus_shortname = 'imukever';
 
@@ -348,69 +354,22 @@ sudo gitlab-runner run --help ">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/11/25/shen-du-xue-xi/yan-zheng-ma-shi-bie/">
+                <a href="/2016/09/05/shu-ju-chu-li/numpy/numpy-chu-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="验证码识别">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Numpy 初试">
                         
-                        <span class="card-title">验证码识别</span>
+                        <span class="card-title">Numpy 初试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">如何使用1.拉取docker 镜像    
-docker pull mukever/opencap:v0.12.启动镜像
-sudo docker run --ipc=host -p 8888:8888 --name opencap open</div>
+                    <div class="summary"> 
+《Numpy Beginner&#39;s Guide》是数据挖掘中继《数据挖掘导论》之后又一本非常棒的书，尽管才开始学习它，但是它的强大让我深深的爱上了它的cool。首先是最基本的安装问题，由于我是ubuntu er，So安装的过程比</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-25
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2016-09-05
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            imukever
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/深度学习/" target="_blank">
-                        <span class="chip bg-color">深度学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Gitlab代码托管和自动化CI">
-                        
-                        <span class="card-title">Gitlab代码托管和自动化CI</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">Gitlab的安装
-使用清华源配置Gitlab
-https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/  
-因为gitlab需要配置邮件提醒，所以需要提前配置163邮箱的stmp
-  
-修改配</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-03
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -426,12 +385,58 @@ https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/
                         <span class="chip bg-color">ubuntu</span>
                     </a>
                     
-                    <a href="/tags/Gitlab/" target="_blank">
-                        <span class="chip bg-color">Gitlab</span>
+                    <a href="/tags/Numpy/" target="_blank">
+                        <span class="chip bg-color">Numpy</span>
                     </a>
                     
-                    <a href="/tags/CI/" target="_blank">
-                        <span class="chip bg-color">CI</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="凸优化理论">
+                        
+                        <span class="card-title">凸优化理论</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">我们一般处理优化问题的时候（在得到这个数学表达形式的时候，可能需要一些变换）都希望将问题转换为凸优化问题，为什么转化为凸优化问题就能使问题变得简化呢？因为凸优化问题有一个特别好的特点：问题的局部解，一定是问题的最优解。
+其实我一直想写一篇关</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2016-03-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            imukever
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ubuntu/" target="_blank">
+                        <span class="chip bg-color">ubuntu</span>
+                    </a>
+                    
+                    <a href="/tags/凸优化/" target="_blank">
+                        <span class="chip bg-color">凸优化</span>
+                    </a>
+                    
+                    <a href="/tags/SVM/" target="_blank">
+                        <span class="chip bg-color">SVM</span>
                     </a>
                     
                 </div>

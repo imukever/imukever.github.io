@@ -177,6 +177,32 @@
   </entry>
   
   <entry>
+    <title>leetcode 简答题1</title>
+    <link href="https://imukever.github.io/2016/03/20/leecode/leecode-1/"/>
+    <id>https://imukever.github.io/2016/03/20/leecode/leecode-1/</id>
+    <published>2016-03-20T02:50:00.000Z</published>
+    <updated>2019-11-26T06:25:38.437Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p><p>来源：力扣（LeetCode） 链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用字典记录出现过的数字下标</p><p>当a + b == target时，a == target - b。</p><p>遍历数组，当前数字为b，如果字典中存在 a == target - b，返回 a 和 b 的下标。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">def</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token triple-quoted-string string">"""        :type nums: List[int]        :type target: int        :rtype: List[int]        """</span>        data_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token keyword">for</span> i<span class="token punctuation">,</span> num <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>            <span class="token keyword">if</span> target <span class="token operator">-</span> num <span class="token keyword">in</span> data_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token keyword">return</span> <span class="token punctuation">[</span>data_dict<span class="token punctuation">[</span> target <span class="token operator">-</span> num<span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">]</span>            data_dict<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> i        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。&lt;/p&gt;
+&lt;p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="https://imukever.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="leetcode" scheme="https://imukever.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>凸优化理论</title>
     <link href="https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/"/>
     <id>https://imukever.github.io/2016/03/20/ji-qi-xue-xi/tu-you-hua/tu-you-hua-li-lun/</id>
