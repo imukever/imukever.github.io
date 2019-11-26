@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>leetcode 简单题1</title>
+      <link href="/2019/11/26/leecode/leecode-1/"/>
+      <url>/2019/11/26/leecode/leecode-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p><p>来源：力扣（LeetCode） 链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用字典记录出现过的数字下标</p><p>当a + b == target时，a == target - b。</p><p>遍历数组，当前数字为b，如果字典中存在 a == target - b，返回 a 和 b 的下标。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">def</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token triple-quoted-string string">"""        :type nums: List[int]        :type target: int        :rtype: List[int]        """</span>        data_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token keyword">for</span> i<span class="token punctuation">,</span> num <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>            <span class="token keyword">if</span> target <span class="token operator">-</span> num <span class="token keyword">in</span> data_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token keyword">return</span> <span class="token punctuation">[</span>data_dict<span class="token punctuation">[</span> target <span class="token operator">-</span> num<span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">]</span>            data_dict<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> i        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>效率 Jupyter Notebook 使用思维导图</title>
       <link href="/2019/11/25/xiao-lu/dmind/"/>
       <url>/2019/11/25/xiao-lu/dmind/</url>
@@ -46,11 +67,11 @@
     
     
     <entry>
-      <title>Gitlab代码托管和自动化CI</title>
-      <link href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/"/>
-      <url>/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/</url>
+      <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
+      <link href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
+      <url>/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</url>
       
-        <content type="html"><![CDATA[<p><strong><em>Gitlab的安装</em></strong></p><p>使用清华源配置Gitlab</p><pre><code>https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/</code></pre><p>  <img src="./gitlab-tuna.png" alt="Alt text"></p><p>因为gitlab需要配置邮件提醒，所以需要提前配置163邮箱的stmp</p><p>  <img src="./stmp.png" alt="Alt text"></p><p>修改配置文件</p><pre><code>sudo vim /etc/gitlab/gitlab.rb</code></pre><p>修改的具体内容如下</p><p>  <img src="./gitlab.png" alt="Alt text"></p><p>  gitlab[‘smtp_password’]为自己设置的stmp密码（不是163邮箱的密码）</p><p>  <img src="./gitlab-mail.png" alt="Alt text"></p><p>注意：user[‘git_user_email’] 要和gitlab[‘smtp_user_name’]一致</p><p>  <img src="./gitlab-mail-user.png" alt="Alt text"></p><p>配置完成之后，启动gitlab</p><pre><code>sudo gitlab-ctl configure</code></pre><p>配置成功后出现的界面（至于logo部分，可以自行修改）</p><p>  <img src="./gitlab-login.png" alt="Alt text"></p><p><strong><em>配置CI</em></strong></p><p>同样使用清华的源，先安装docker，安装时如果出错，请停止gitlab。如果没有错误提示，按照清华源提示操作。</p><pre><code>sudo gitlab-ctl stop</code></pre><p>  <img src="./docker.png" alt="Alt text"></p><p>同样使用清华的源，安装gitlab-ci-multi-runner</p><p>  <img src="./ci.png" alt="Alt text"></p><p>新建一个项目，推到gitlab</p><p>然后配置 .gitlab-ci.yml</p><p>  <img src="./ci-test.png" alt="Alt text"></p><p>注册runner</p><p>记住url和token<br>  <img src="./runner.png" alt="Alt text"></p><pre><code>  sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>开启gitlab-runner</p><pre><code>```sudo gitlab-runner run```</code></pre><p>成功的结果<br>  <img src="./success.png" alt="Alt text"></p><p>gitlab-ci配置文件教程</p><pre><code>http://docs.gitlab.com/ce/ci/yaml/README.html#cache</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
       
       
       
@@ -69,11 +90,11 @@
     
     
     <entry>
-      <title>Gitlab-CI自动化运行机器学习scikit-learn</title>
-      <link href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/"/>
-      <url>/2019/06/03/dai-ma-guan-li/gitlab/gitlab-ci-zi-dong-hua-yun-xing-ji-qi-xue-xi-scikit-learn/</url>
+      <title>Gitlab代码托管和自动化CI</title>
+      <link href="/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/"/>
+      <url>/2019/06/03/dai-ma-guan-li/gitlab/gitlab-dai-ma-tuo-guan-he-zi-dong-hua-ci/</url>
       
-        <content type="html"><![CDATA[<p>在Gitlab代码托管和自动化CI部分中使用docker能完成c++代码的编译运行，当我运行</p><pre><code>python ****.py</code></pre><p>总是提示我没有安装numpy模块，其实我是安装的了。<br>使用</p><pre><code>sudo gitlab-runner run --help</code></pre><p>  <img src="./gitlab-runner-help.png" alt="Alt text"></p><p>发现gitlab-runner的编译log可以添加到系统的log</p><pre><code>cat /var/log/syslog</code></pre><p>  <img src="./gitlab-syslog.png" alt="Alt text"></p><p>可惜没什么用，突然想到在选择executor</p><pre><code>sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>  可以选择shell。<br>  当我再次运行下面命令时,就可以运行了。</p><pre><code>  sudo gitlab-runner run</code></pre><p>  <img src="./gitlab-python.png" alt="Alt text"></p>]]></content>
+        <content type="html"><![CDATA[<p><strong><em>Gitlab的安装</em></strong></p><p>使用清华源配置Gitlab</p><pre><code>https://mirror.tuna.tsinghua.edu.cn/help/gitlab-ce/</code></pre><p>  <img src="./gitlab-tuna.png" alt="Alt text"></p><p>因为gitlab需要配置邮件提醒，所以需要提前配置163邮箱的stmp</p><p>  <img src="./stmp.png" alt="Alt text"></p><p>修改配置文件</p><pre><code>sudo vim /etc/gitlab/gitlab.rb</code></pre><p>修改的具体内容如下</p><p>  <img src="./gitlab.png" alt="Alt text"></p><p>  gitlab[‘smtp_password’]为自己设置的stmp密码（不是163邮箱的密码）</p><p>  <img src="./gitlab-mail.png" alt="Alt text"></p><p>注意：user[‘git_user_email’] 要和gitlab[‘smtp_user_name’]一致</p><p>  <img src="./gitlab-mail-user.png" alt="Alt text"></p><p>配置完成之后，启动gitlab</p><pre><code>sudo gitlab-ctl configure</code></pre><p>配置成功后出现的界面（至于logo部分，可以自行修改）</p><p>  <img src="./gitlab-login.png" alt="Alt text"></p><p><strong><em>配置CI</em></strong></p><p>同样使用清华的源，先安装docker，安装时如果出错，请停止gitlab。如果没有错误提示，按照清华源提示操作。</p><pre><code>sudo gitlab-ctl stop</code></pre><p>  <img src="./docker.png" alt="Alt text"></p><p>同样使用清华的源，安装gitlab-ci-multi-runner</p><p>  <img src="./ci.png" alt="Alt text"></p><p>新建一个项目，推到gitlab</p><p>然后配置 .gitlab-ci.yml</p><p>  <img src="./ci-test.png" alt="Alt text"></p><p>注册runner</p><p>记住url和token<br>  <img src="./runner.png" alt="Alt text"></p><pre><code>  sudo gitlab-runner register</code></pre><p>  <img src="./register.png" alt="Alt text"></p><p>开启gitlab-runner</p><pre><code>```sudo gitlab-runner run```</code></pre><p>成功的结果<br>  <img src="./success.png" alt="Alt text"></p><p>gitlab-ci配置文件教程</p><pre><code>http://docs.gitlab.com/ce/ci/yaml/README.html#cache</code></pre>]]></content>
       
       
       
@@ -124,27 +145,6 @@
             <tag> ubuntu </tag>
             
             <tag> Numpy </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>leetcode 简单题1</title>
-      <link href="/2016/03/20/leecode/leecode-1/"/>
-      <url>/2016/03/20/leecode/leecode-1/</url>
-      
-        <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p><p>来源：力扣（LeetCode） 链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a></p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用字典记录出现过的数字下标</p><p>当a + b == target时，a == target - b。</p><p>遍历数组，当前数字为b，如果字典中存在 a == target - b，返回 a 和 b 的下标。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">def</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nums<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>        <span class="token triple-quoted-string string">"""        :type nums: List[int]        :type target: int        :rtype: List[int]        """</span>        data_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>        <span class="token keyword">for</span> i<span class="token punctuation">,</span> num <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">:</span>            <span class="token keyword">if</span> target <span class="token operator">-</span> num <span class="token keyword">in</span> data_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token keyword">return</span> <span class="token punctuation">[</span>data_dict<span class="token punctuation">[</span> target <span class="token operator">-</span> num<span class="token punctuation">]</span><span class="token punctuation">,</span>i<span class="token punctuation">]</span>            data_dict<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> i        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
